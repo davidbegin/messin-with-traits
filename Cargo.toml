@@ -2,3 +2,6 @@
 name = "messin_with_traits"
 version = "0.0.1"
 authors = ["David Begin <davidmichaelbe@gmail.com>"]
+
+[dependencies]
+"type_printer" = "0.0.1"

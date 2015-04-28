@@ -1,3 +1,5 @@
+extern crate type_printer;
+
 fn main() {
     print_title();
 
@@ -10,10 +12,12 @@ fn main() {
     let guest = Guest;
 
     print_stats(david);
+    seperator();
     print_stats(guest);
 }
 
 fn print_stats<T>(user: T) where T: FullName + Email {
+    println!("^^^^^ Type {:?}", type_printer::print_type_of(&user));
     println!("Name: {}", user.name());
     println!("Email: {}", user.email());
 }
@@ -65,4 +69,8 @@ trait Email {
 fn print_title() {
     println!("\n\nMessin' with traits");
     println!("===================\n\n");
+}
+
+fn seperator() {
+    println!("\n");
 }
