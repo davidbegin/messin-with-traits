@@ -7,9 +7,7 @@ fn main() {
         email: "david@example.com".to_string()
     };
 
-    let guest = Guest {
-        default_name: "Guest User".to_string()
-    };
+    let guest = Guest;
 
     print_stats(david);
     print_stats(guest);
@@ -26,9 +24,7 @@ struct User {
     email: String,
 }
 
-struct Guest {
-    default_name: String
-}
+struct Guest;
 
 impl FullName for User {
     fn name(&self) -> String {
@@ -37,12 +33,6 @@ impl FullName for User {
             self.first_name.to_string(),
             self.last_name.to_string()
         )
-    }
-}
-
-impl FullName for Guest {
-    fn name(&self) -> String {
-        self.default_name.to_string()
     }
 }
 
@@ -55,6 +45,12 @@ impl Email for User {
 impl Email for Guest {
     fn email(&self) -> String {
         "guest@example.com".to_string()
+    }
+}
+
+impl FullName for Guest {
+    fn name(&self) -> String {
+        "Guest".to_string()
     }
 }
 
