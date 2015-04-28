@@ -7,24 +7,27 @@ fn main() {
 
     let david = User {
         first_name: "David".to_string(),
-        last_name: "Begin".to_string()
+        last_name: "Begin".to_string(),
+        email: "david@example.com".to_string()
     };
 
     let guest = Guest {
         default_name: "Guest User".to_string()
     };
 
-    name_printer(david);
-    name_printer(guest);
+    print_stats(david);
+    print_stats(guest);
 }
 
-fn name_printer<T: FullName>(user: T) {
+fn print_stats<T: FullName + Email>(user: T) {
     println!("Name: {}", user.name());
+    println!("Email: {}", user.email());
 }
 
 struct User {
     first_name: String,
     last_name: String,
+    email: String,
 }
 
 struct Guest {
@@ -47,8 +50,24 @@ impl FullName for Guest {
     }
 }
 
+impl Email for User {
+    fn email(&self) -> String {
+        self.email.to_string()
+    }
+}
+
+impl Email for Guest {
+    fn email(&self) -> String {
+        "guest@example.com".to_string()
+    }
+}
+
 trait FullName {
     fn name(&self) -> String;
+}
+
+trait Email {
+    fn email(&self) -> String;
 }
 
 fn print_title() {
