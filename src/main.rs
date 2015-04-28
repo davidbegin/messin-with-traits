@@ -15,7 +15,7 @@ fn main() {
     print_stats(guest);
 }
 
-fn print_stats<T: FullName + Email>(user: T) {
+fn print_stats<T>(user: T) where T: FullName + Email {
     println!("Name: {}", user.name());
     println!("Email: {}", user.email());
 }
