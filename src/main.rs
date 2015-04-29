@@ -80,3 +80,23 @@ fn print_title() {
 fn seperator() {
     println!("\n");
 }
+
+#[test]
+fn name_returns_the_users_full_name() {
+    let subject = User {
+        first_name: "David".to_string(),
+        last_name: "Begin".to_string(),
+        email: "david@example.com".to_string()
+    };
+    assert_eq!(subject.name(), "David Begin".to_string());
+}
+
+#[test]
+fn email_returns_the_users_email() {
+    let subject = User {
+        first_name: "David".to_string(),
+        last_name: "Begin".to_string(),
+        email: "david@example.com".to_string()
+    };
+    assert_eq!(subject.email(), "david@example.com".to_string());
+}
