@@ -11,14 +11,20 @@ fn main() {
 
     let guest = Guest;
 
-    print_stats(david);
-    seperator();
-    print_stats(guest);
+    print_stats(david); seperator(); print_stats(guest);
 }
 
 fn print_stats<T>(user: T) where T: FullName + Email {
     println!("^^^^^ Type {:?}", type_printer::print_type_of(&user));
+    print_name(&user);
+    print_email(&user);
+}
+
+fn print_name<T>(user: &T) where T: FullName {
     println!("Name: {}", user.name());
+}
+
+fn print_email<T>(user: &T) where T: Email {
     println!("Email: {}", user.email());
 }
 
