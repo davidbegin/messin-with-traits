@@ -83,10 +83,13 @@ mod tests {
         // assert_eq!(subject.obfuscated_email(), "xxx@example.com".to_string());
         assert_eq!(subject.obfuscated_email(), "david@example.com".to_string());
 
-        let re = match Regex::new(r"\d+") {
+        let re = match Regex::new(r".*@") {
             Ok(re) => re,
             Err(err) => panic!("{}", err)
         };
 
+        let before = "david@example.com";
+        let after = re.replace_all(before, "xxx@");
+        assert_eq!(after, "xxx@example.com")
     }
 }
