@@ -1,6 +1,8 @@
-#![feature(convert)]
+use regex;
 
-use regex::Regex;
+macro_rules! regex(
+    ($s:expr) => (regex::Regex::new($s).unwrap());
+);
 
 pub struct User {
     pub first_name: String,
@@ -28,16 +30,7 @@ impl Email for User {
 
 impl ObfuscatedEmail for User {
     fn obfuscated_email(&self) -> String {
-        // let re = match Regex::new(r".*@") {
-        //     Ok(re) => re,
-        //     Err(err) => panic!("{}", err)
-        // };
-
-        let re = match Regex::new(r".*@") {
-            Ok(re) => re,
-            Err(err) => panic!("{}", err)
-        };
-
+        let re = regex!(r".*@");
         let raw_before = self.email();
         let before_slice = raw_before.as_str();
         let after = re.replace_all(before_slice, "xxx@");

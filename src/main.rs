@@ -1,4 +1,5 @@
 #![feature(convert)]
+// #![plugin(regex_macros)]
 
 extern crate type_printer;
 extern crate regex;
