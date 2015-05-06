@@ -1,3 +1,5 @@
+#![feature(convert)]
+
 extern crate type_printer;
 extern crate regex;
 use regex::Regex;
@@ -80,16 +82,6 @@ mod tests {
             last_name: "Begin".to_string(),
             email: "david@example.com".to_string()
         };
-        // assert_eq!(subject.obfuscated_email(), "xxx@example.com".to_string());
-        assert_eq!(subject.obfuscated_email(), "david@example.com".to_string());
-
-        let re = match Regex::new(r".*@") {
-            Ok(re) => re,
-            Err(err) => panic!("{}", err)
-        };
-
-        let before = "david@example.com";
-        let after = re.replace_all(before, "xxx@");
-        assert_eq!(after, "xxx@example.com")
+        assert_eq!(subject.obfuscated_email(), "xxx@example.com".to_string());
     }
 }
