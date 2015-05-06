@@ -22,9 +22,21 @@ impl Email for User {
     }
 }
 
+impl ObfuscatedEmail for User {
+    fn obfuscated_email(&self) -> String {
+        self.email.to_string()
+    }
+}
+
 impl Email for Guest {
     fn email(&self) -> String {
         "guest@example.com".to_string()
+    }
+}
+
+impl ObfuscatedEmail for Guest {
+    fn obfuscated_email(&self) -> String {
+        "xxx@example.com".to_string()
     }
 }
 
@@ -40,5 +52,9 @@ pub trait FullName {
 
 pub trait Email {
     fn email(&self) -> String;
+}
+
+pub trait ObfuscatedEmail {
+    fn obfuscated_email(&self) -> String;
 }
 
