@@ -1,4 +1,6 @@
 extern crate type_printer;
+extern crate regex;
+use regex::Regex;
 mod users;
 use users::FullName;
 use users::Email;
@@ -46,6 +48,7 @@ fn seperator() {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use regex::Regex;
     use users;
     use users::FullName;
     use users::Email;
@@ -80,5 +83,11 @@ mod tests {
         };
         // assert_eq!(subject.obfuscated_email(), "xxx@example.com".to_string());
         assert_eq!(subject.obfuscated_email(), "david@example.com".to_string());
+
+        let re = match Regex::new(r"\d+") {
+            Ok(re) => re,
+            Err(err) => panic!("{}", err)
+        };
+
     }
 }

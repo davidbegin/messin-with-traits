@@ -2,8 +2,14 @@
 name = "messin_with_traits"
 version = "0.0.1"
 dependencies = [
+ "regex 0.1.30 (registry+https://github.com/rust-lang/crates.io-index)",
  "type_printer 0.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "regex"
+version = "0.1.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "type_printer"
