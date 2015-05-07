@@ -1,9 +1,7 @@
 #![feature(convert)]
-// #![plugin(regex_macros)]
 
 extern crate type_printer;
 extern crate regex;
-use regex::Regex;
 mod users;
 use users::FullName;
 use users::Email;
@@ -20,7 +18,6 @@ fn main() {
 
     let guest = users::Guest;
 
-    // Am I passing ownership here?
     print_stats(david); seperator(); print_stats(guest);
 }
 
