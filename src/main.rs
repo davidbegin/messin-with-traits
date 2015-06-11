@@ -5,6 +5,7 @@ extern crate regex;
 mod users;
 mod tests;
 mod da_printers;
+use std::io::Write;
 
 fn main() {
     da_printers::print_title();
@@ -21,7 +22,8 @@ fn main() {
     // da_printers::seperator();
     // da_printers::print_stats(guest);
 
-    trait_madness();
+    // trait_madness();
+    write_trait_city();
 }
 
 fn trait_madness() {
@@ -91,4 +93,27 @@ impl HasTitle for Circle {
     fn title(self) -> String {
         "Circle".to_string()
     }
+}
+
+fn write_trait_city() {
+    let mut f = std::fs::File::open("README.md").ok().expect("Couldn’t open README.md");
+    let buf = b"whatev"; // byte string literal. buf: &[u8; 6]
+
+    // is f being cloned or copied during this?
+    //
+    // I need to learn more about println! implementation
+    //
+    // and find a more strict alternative
+    println!("File Length: {:?}", f.metadata().unwrap().len());
+    println!("Is this a file?: {:?}", f.metadata().unwrap().is_file());
+
+    println!("Checkout this byte string literal: {:?}", buf);
+
+    let single_a: &[u8; 1] = b"a";
+
+    println!("I expect this to be 65: {:?}", single_a);
+    // but its 97!
+    //
+    // that sounds familar too
+    let result = f.write(single_a);
 }
