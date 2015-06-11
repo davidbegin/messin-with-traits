@@ -30,6 +30,14 @@ fn trait_madness() {
 
     let s1 = Square { side: 10.1, title: "Square".to_owned() };
     area_printer(&s1);
+
+
+    // these can not be borrowed, because when
+    // the title needs to be printed, it needs to be
+    // deferenced, and that takes ownership,
+    //
+    // this is not a problem for i32, because
+    // it has Copy and Clone implemented
     title_printer(s1);
     title_printer(c1);
 }
