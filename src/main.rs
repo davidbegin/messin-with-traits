@@ -6,6 +6,7 @@ mod users;
 mod tests;
 mod da_printers;
 use std::io::Write;
+mod warm_ups;
 
 fn main() {
     da_printers::print_title();
@@ -23,7 +24,17 @@ fn main() {
     // da_printers::print_stats(guest);
 
     // trait_madness();
-    write_trait_city();
+    // write_trait_city();
+
+
+    // so I want some warmups
+    //
+    // I am always forgetting the syntax, and it seems intutive
+    // but I don't have enough practical reasons
+    //
+    // while I wait for a practical reason, I will warm up.
+
+    warm_ups::rep_one();
 }
 
 fn trait_madness() {
@@ -116,4 +127,16 @@ fn write_trait_city() {
     //
     // that sounds familar too
     let result = f.write(single_a);
+}
+
+trait HasAge {
+    fn age(&self) -> i32;
+}
+
+fn dog_years_converter<T: HasAge>(obj: T) -> i32 {
+    4
+}
+
+struct Person {
+    age: i32,
 }
