@@ -23,6 +23,9 @@ pub fn rep_one() {
     c2("cali".to_owned(), vec![255]);
     c2(vec!["whos the fire".to_string()], 1);
     // c2(vec!["whos the fire".to_string()], 1);
+
+    // watch this I can convert any f64 to a i32
+    println!("Converted this i32 to i64: {}", c3(99));
 }
 
 trait HasDoIt {
@@ -49,7 +52,6 @@ impl HasYeahYeah for Vec<i32> {
         "Yeah Yeah an vec returning stuff".to_owned()
     }
 }
-
 
 impl HasDoIt for i32 {
     fn do_it(&self) {
@@ -118,4 +120,28 @@ fn c2<T: HasDoIt, Z: HasDoIt + HasYeahYeah>(thang1: T, thang2: Z) {
     thang1.do_it();
     thang2.do_it();
     println!("yeah yeah: {}", thang2.yeah_yeah());
+}
+
+// I would like to get into where clauses,
+// and look at some of the stylistic differences,
+// because it is a simple a very primal appeal of Rust
+//
+// but I also want to experiment with implementing lots of Clone and Debug
+//
+// I also want to experiment with traits with Generics
+//
+// which I am going to just start with and steal the ConvertTo example!
+
+trait ConvertTo<ThingYouToConvertTo> {
+    fn convert(&self) -> ThingYouToConvertTo;
+}
+
+fn c3<T: ConvertTo<i64>>(thang: T) -> i64 {
+    thang.convert()
+}
+
+impl ConvertTo<i64> for i32 {
+    fn convert(&self) -> i64 {
+        4i64
+    }
 }
