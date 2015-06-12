@@ -4,8 +4,8 @@ pub fn rep_one() {
     c1(1);
     c1("woah");
     c1("fancy beat".to_string());
-    // c1(232.44f64);
-    // c1(b'a');
+    c1(232.44f64);
+    c1(b'a');
 }
 
 trait HasDoIt {
@@ -26,7 +26,19 @@ impl HasDoIt for &'static str {
 
 impl HasDoIt for String {
     fn do_it(&self) {
-        println!("I'm a big ole heap string!");
+        println!("I'm a big ole heap string and I'm doing it!");
+    }
+}
+
+impl HasDoIt for f64 {
+    fn do_it(&self) {
+        println!("I'm a f64 and I'm doing it!");
+    }
+}
+
+impl HasDoIt for u8 {
+    fn do_it(&self) {
+        println!("I'm an u8 that I made on accident and I'm doing it!");
     }
 }
 
