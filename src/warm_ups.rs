@@ -8,7 +8,7 @@ pub fn rep_one() {
     // c1(b'a');
 }
 
-trait DoIt {
+trait HasDoIt {
     fn do_it(&self);
 }
 
