@@ -20,6 +20,9 @@ pub fn rep_one() {
     // when it said _ type
     // I was like "oh no vec type issues, goodbye!"
     c2(vec![1], 1);
+    c2("cali".to_owned(), vec![255]);
+    c2(vec!["whos the fire".to_string()], 1);
+    // c2(vec!["whos the fire".to_string()], 1);
 }
 
 trait HasDoIt {
@@ -35,6 +38,18 @@ impl HasDoIt for Vec<i32> {
         println!("who says a collection can't do it!");
     }
 }
+
+impl HasDoIt for Vec<String> {
+    fn do_it(&self) {
+        println!("I went for gold, but these type signatures are strict");
+    }
+}
+impl HasYeahYeah for Vec<i32> {
+    fn yeah_yeah(&self) -> String {
+        "Yeah Yeah an vec returning stuff".to_owned()
+    }
+}
+
 
 impl HasDoIt for i32 {
     fn do_it(&self) {
