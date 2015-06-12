@@ -3,7 +3,7 @@ pub fn rep_one() {
 
     c1(1);
     c1("woah");
-    // c1("fancy beat".to_string());
+    c1("fancy beat".to_string());
     // c1(232.44f64);
     // c1(b'a');
 }
@@ -21,6 +21,12 @@ impl HasDoIt for i32 {
 impl HasDoIt for &'static str {
     fn do_it(&self) {
         println!("I'm &str and I'm doing it!");
+    }
+}
+
+impl HasDoIt for String {
+    fn do_it(&self) {
+        println!("I'm a big ole heap string!");
     }
 }
 
