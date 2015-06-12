@@ -14,6 +14,12 @@ pub fn rep_one() {
     // I am also out of practice
     // let vec: Vec<i32> = vec![1];
     c2(2, 1);
+
+    //I think got scared off by scary error messages
+    //
+    // when it said _ type
+    // I was like "oh no vec type issues, goodbye!"
+    c2(vec![1], 1);
 }
 
 trait HasDoIt {
@@ -22,6 +28,12 @@ trait HasDoIt {
 
 trait HasYeahYeah {
     fn yeah_yeah(&self) -> String;
+}
+
+impl HasDoIt for Vec<i32> {
+    fn do_it(&self) {
+        println!("who says a collection can't do it!");
+    }
 }
 
 impl HasDoIt for i32 {
