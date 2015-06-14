@@ -7,7 +7,8 @@ pub fn where_have_i_lost_my_mind() {
 
     // could I implement convert for i32 and this work?
     // let bad_inverse: i32 = inverse();
-    use_a_trait_with_defaults();
+    // use_a_trait_with_defaults();
+    use_a_trait_with_inheritance();
 }
 
 // I am defining a trait that takes a Generic
@@ -100,3 +101,98 @@ impl WithDefaults for i64 {
         println!("i64 overoad this even though it didn't need to");
     }
 }
+
+// inheritance in traits
+
+fn use_a_trait_with_inheritance() {
+    println!("Inheritance examples");
+    let person1 = Person { name: "Steve".to_owned() };
+    name_printer(person1);
+    // let person2 = Person2 { name: "Bill" };
+    // name_printer2(person2)
+    // fancy_name_printer(person2);
+}
+
+
+// lets try making a trait of  HasName
+// and then a trait that requires that trait call FancyHasName
+
+struct Person {
+    name: String
+}
+
+impl HasName for Person {
+    fn name(self) -> String {
+        self.name
+    }
+}
+
+trait HasName {
+    fn name(self) -> String;
+}
+
+fn name_printer<T: HasName>(x: T) {
+    println!("Name: {}", x.name());
+}
+
+// fn name_printer2<T: HasName2>(x: T) {
+//     println!("Name: {}", x.name());
+// }
+
+fn fancy_name_printer<T: FancyName>(x: T) {
+    println!("Fancy Name: {:?}", x.fancy_name());
+}
+
+trait FancyName : HasName {
+    fn fancy_name(self) -> String;
+}
+
+// struct Person2 {
+//     name: str,
+// }
+//
+// trait HasName2 {
+//     fn name(&self) -> str;
+// }
+
+// So I can't have a function return a str
+// unless I know exactly what the size will be at compile time
+//
+// how is this possible for a method
+// impl HasName2 for Person2 {
+//     fn name(&self) -> str {
+//         self.name
+//     }
+// }
+
+// impl FancyName for Person2 {
+//     fn fancy_name(self) -> str {
+//         // let mut title = "Mr.".to_owned();
+//         // let name = "Bill".to_owned();
+//         // title.push_str(name)
+//
+//         // "Mr. ".to_owned() + self.name
+//         // "Mr. " + self.name
+//         // self.name
+//     }
+// }
+
+// I need to learn more about these two behaviors
+// the trait `core::marker::Sized` is not implemented for the type `str` [E0277]
+// note: `str` does not have a constant size known at compile-time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
