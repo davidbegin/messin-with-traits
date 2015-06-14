@@ -6,6 +6,7 @@ pub fn where_have_i_lost_my_mind() {
     // let bad_inverse: i32 = inverse();
 
     // could I implement convert for i32 and this work?
+    // let bad_inverse: i32 = inverse();
 }
 
 // I am defining a trait that takes a Generic
@@ -51,3 +52,19 @@ fn inverse<T>() -> T
 // So if this function is supposed to convert to i64 it will work
 // but if we put it in a function where it doesn't
 // ...then it will break?
+
+
+// well this created another problem!
+//
+// when I only had conversions to 1 type,
+// the compiler didn't complain using inverse inline
+// because it knew it could be one type
+//
+// now my previous code won't compile until
+// explictly set the type of variables being bound from
+// the result of inverse
+// impl ConvertTo<i32> for i32 {
+//     fn convert(&self) -> i32 {
+//         *self as i32
+//     }
+// }
