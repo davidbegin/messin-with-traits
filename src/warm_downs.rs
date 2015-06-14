@@ -1,12 +1,13 @@
 pub fn where_have_i_lost_my_mind() {
-    println!("Converted: {}", normal(&5));
-    println!("Converted: {}", inverse());
+    // println!("Converted: {}", normal(&5));
+    // println!("Converted: {}", inverse());
 
     // this doesn't compile, because i32 only has i64 implement for a conversion
     // let bad_inverse: i32 = inverse();
 
     // could I implement convert for i32 and this work?
     // let bad_inverse: i32 = inverse();
+    use_a_trait_with_defaults();
 }
 
 // I am defining a trait that takes a Generic
@@ -68,3 +69,34 @@ fn inverse<T>() -> T
 //         *self as i32
 //     }
 // }
+
+// default methods
+
+trait WithDefaults {
+    fn you_need_to_implement_this(&self);
+
+    fn default_for_free(&self) {
+        println!("You get this method for free!");
+    }
+}
+
+impl WithDefaults for i32 {
+    fn you_need_to_implement_this(&self) {
+        println!("this was implementing custom for i32");
+    }
+}
+
+fn use_a_trait_with_defaults() {
+    1.default_for_free();
+    10i64.default_for_free();
+}
+
+impl WithDefaults for i64 {
+    fn you_need_to_implement_this(&self) {
+        println!("i63 needed to implement this");
+    }
+
+    fn default_for_free(&self) {
+        println!("i64 overoad this even though it didn't need to");
+    }
+}
