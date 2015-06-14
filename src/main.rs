@@ -7,6 +7,7 @@ mod tests;
 mod da_printers;
 use std::io::Write;
 mod warm_ups;
+mod warm_downs;
 
 fn main() {
     da_printers::print_title();
@@ -34,7 +35,8 @@ fn main() {
     //
     // while I wait for a practical reason, I will warm up.
 
-    warm_ups::rep_one();
+    // warm_ups::rep_one();
+    warm_downs::where_have_i_lost_my_mind();
 }
 
 fn trait_madness() {
