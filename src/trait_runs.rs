@@ -5,7 +5,52 @@ pub fn examples() {
 
 fn animals() {
     let fido = Dog { name: "Fido" };
+    let boots = Cat { name: "Boots" };
     animal_whisperer(&fido);
+    animal_whisperer(&boots);
+}
+
+fn trick_challenge<T>(animal: &T)
+    where T: HasSpeak + HasName + HasSpecialTalent {
+    animal.speak();
+    animal.name();
+    animal.special_talent();
+}
+
+fn animal_whisperer<T: HasSpeak>(animal: &T) {
+    animal.speak();
+}
+
+trait HasName {
+    fn name(&self) -> String;
+}
+
+trait HasSpecialTalent {
+    fn special_talent(&self);
+}
+
+trait HasSpeak {
+    fn speak(&self);
+}
+
+struct Cat {
+    name: &'static str,
+}
+
+impl HasSpeak for Cat {
+    fn speak(&self) {
+        println!("Meow Meow");
+    }
+}
+
+struct Dog {
+    name: &'static str,
+}
+
+impl HasSpeak for Dog {
+    fn speak(&self) {
+        println!("Woaf Woaf");
+    }
 }
 
 // The Shape is the first example in the Trait Book
@@ -66,21 +111,3 @@ fn animals() {
 // =======================================================================
 
 // #3 ====================================================================
-fn animal_whisperer<T: HasSpeak>(animal: &T) {
-    animal.speak();
-}
-
-trait HasSpeak {
-    fn speak(&self);
-}
-
-struct Dog {
-    name: &'static str,
-}
-
-impl HasSpeak for Dog {
-    fn speak(&self) {
-        println!("Woaf Woaf");
-    }
-}
-// =======================================================================
