@@ -9,6 +9,7 @@ use std::io::Write;
 mod warm_ups;
 mod warm_downs;
 mod trait_runs;
+mod trait_objects;
 
 fn main() {
     da_printers::print_title();
@@ -39,7 +40,8 @@ fn main() {
     // warm_ups::rep_one();
     // warm_downs::where_have_i_lost_my_mind();
 
-    trait_runs::examples();
+    // trait_runs::examples();
+    trait_objects::journey_into_the_unknown();
 }
 
 fn trait_madness() {
