@@ -13,6 +13,9 @@ pub fn journey_into_the_unknown() {
          Hold back I'm about to go dynamic!
          <=====================================>\n\n
     ");
+
+    let k = 32u8;
+    dynamic_dispatch_in_yo_face(&k as &Foo);
 }
 
 // straight from the book
@@ -74,6 +77,6 @@ fn do_something<T: Foo>(x: T) {
 //
 // because we are back in my world of dynamicness!
 //
-fn static_dispatch_in_yo_face(x: &Foo) {
-    x.method();
+fn dynamic_dispatch_in_yo_face(x: &Foo) {
+    println!("dynamic dispatch in action: {}", x.method());
 }
