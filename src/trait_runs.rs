@@ -8,12 +8,16 @@ fn animals() {
     let boots = Cat { name: "Boots" };
     animal_whisperer(&fido);
     animal_whisperer(&boots);
+
+    let basel = Snake { name: "Basel" };
+    trick_challenge(&basel);
 }
 
 fn trick_challenge<T>(animal: &T)
     where T: HasSpeak + HasName + HasSpecialTalent {
     animal.speak();
-    animal.name();
+    let name = animal.name();
+    println!("The Animals name is: {}", name);
     animal.special_talent();
 }
 
@@ -31,6 +35,28 @@ trait HasSpecialTalent {
 
 trait HasSpeak {
     fn speak(&self);
+}
+
+struct Snake {
+    name: &'static str,
+}
+
+impl HasSpeak for Snake {
+    fn speak(&self) {
+        println!("Hiss Hiss");
+    }
+}
+
+impl HasName for Snake {
+    fn name(&self) -> String {
+        self.name.to_owned()
+    }
+}
+
+impl HasSpecialTalent for Snake {
+    fn special_talent(&self) {
+        println!("**...feeds on your fear...**");
+    }
 }
 
 struct Cat {
