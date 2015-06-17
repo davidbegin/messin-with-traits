@@ -16,6 +16,18 @@ pub fn journey_into_the_unknown() {
 
     let k = 32u8;
     dynamic_dispatch_in_yo_face(&k as &Foo);
+
+    let s = "Remy".to_string();
+    dynamic_dispatch_in_yo_face(&s as &Foo);
+
+    // Won't compile, because this is not implementing
+    // traits dynamically
+    //
+    // ...value is something else
+    //
+    // ...but what
+    // let u = 9.4f64;
+    // dynamic_dispatch_in_yo_face(&u as &Foo);
 }
 
 // straight from the book
@@ -80,3 +92,10 @@ fn do_something<T: Foo>(x: T) {
 fn dynamic_dispatch_in_yo_face(x: &Foo) {
     println!("dynamic dispatch in action: {}", x.method());
 }
+
+// Another Copy Pasta I need to read over and over again
+//
+// A function that takes a trait object is not specialized to each of the types that implements
+// Foo: only one copy is generated, often (but not always) resulting in less code bloat. However,
+// this comes at the cost of requiring slower virtual function calls, and effectively inhibiting
+// any chance of inlining and related optimizations from occurring.
