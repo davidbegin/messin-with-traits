@@ -10,6 +10,7 @@ mod warm_ups;
 mod warm_downs;
 mod trait_runs;
 mod trait_objects;
+mod trait_objects2;
 
 fn main() {
     da_printers::print_title();
@@ -41,7 +42,9 @@ fn main() {
     // warm_downs::where_have_i_lost_my_mind();
 
     // trait_runs::examples();
-    trait_objects::journey_into_the_unknown();
+    // trait_objects::journey_into_the_unknown();
+
+    trait_objects2::back_in_the_habit();
 }
 
 fn trait_madness() {
