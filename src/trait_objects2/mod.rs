@@ -5,7 +5,16 @@ pub fn back_in_the_habit() {
     println!("{}", 8u8.method());
     println!("{}", "nice".to_string().method());
 
-    do_something(11u8);
+    // do_something(11u8);
+
+    let x = 5u8;
+    // Type ensure!!! whaaa
+    do_something2(&x as &Foo);
+}
+
+
+fn do_something2(x: &Foo) {
+  x.method();
 }
 
 fn do_something<T: Foo>(x: T) {
